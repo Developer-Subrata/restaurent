@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const SignupForm = () => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -10,32 +10,36 @@ const Login = () => {
     // For example, you can send form data to your server
 
     // After successful form submission, redirect to another page
-    navigate("/");
+    
+    navigate("/Login");
   };
 
   return (
     <div className="bodysign">
     <form id="login-box" onSubmit={handleSubmit}>
       <div className="left">
-        <h1><b>Log In</b></h1><br/>
+        <h1><b>Sign Up</b></h1>
         
-        <input type="text" name="username" placeholder="Username :" required /><br />
+        <input type="text" name="username" placeholder="Username :" required />
+        <input type="number" name="mobile" placeholder="Mobile No :" required />
+        <input type="email" name="email" placeholder="E-mail :" required />
         <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="password2" placeholder="Retype password" required />
         
-        <input type="submit" name="signup_submit" value="LogIn" />
+        <input type="submit" name="signup_submit" value="Sign me up" />
       </div>
       
       <div className="right">
-        <span className="loginwith">Log-In with<br /></span>
+        <span className="loginwith">Sign in with<br />social network</span>
         
         <button className="social-signin facebook">Log in with facebook</button>
         <button className="social-signin twitter">Log in with Twitter</button>
         <button className="social-signin google">Log in with Google+</button>
       </div>
-      <div className="orl">OR</div>
+      <div className="or">OR</div>
     </form>
     </div>
   );
 };
 
-export default Login;
+export default SignupForm;

@@ -7,7 +7,7 @@ const Home = ({recipes}) => {
     <>
     <HeroSection/>
     {/* prox-driven */}
-     <Recipes recipes={recipes}/>
+     {/* <Recipes recipes={recipes}/> */}
     </>
   )
 }

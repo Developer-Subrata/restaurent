@@ -17,8 +17,7 @@
       "Sugar",
       "Milk"
     ],
-    "cookingTime": "5 minutes",
-    "PRICE": "$5000"
+    "cookingTime": "5 minutes"
   },  
   {
       "id": "613b8b1c28a914001b7d28a1",
@@ -156,32 +155,6 @@
         "Ketchup"
       ],
       "cookingTime": "40 minutes"
-    },
-    {
-      "id": "613b8b1c28a914001b7d28a7",
-      "title": "Aloo Gosht",
-      "steps": [
-        "Heat oil in a pot and fry 1 finely chopped onion until golden brown.",
-        "Add 1 tablespoon of ginger-garlic paste and fry for a minute.",
-        "Add 500g of mutton pieces and cook until browned on all sides.",
-        "Stir in 2 teaspoons of red chili powder, 1 teaspoon of turmeric powder, 1 teaspoon of cumin powder, and salt to taste.",
-        "Add 2 cups of water and cook on low heat until the mutton is tender.",
-        "Add 2 peeled and cubed potatoes and cook until they are soft and the gravy thickens."
-      ],
-      "image": "/aloo_gosht.jpg",
-      "description": "A delicious and hearty curry made with mutton and potatoes.",
-      "ingredients": [
-        "500g mutton",
-        "2 potatoes",
-        "1 onion",
-        "Ginger-garlic paste",
-        "Red chili powder",
-        "Turmeric powder",
-        "Cumin powder",
-        "Salt",
-        "Oil"
-      ],
-      "cookingTime": "1 hour 15 minutes"
     },
     {
       "id": "613b8b1c28a914001b7d28a8",
@@ -417,26 +390,6 @@
         "Coriander leaves"
       ],
       "cookingTime": "30 minutes"
-    },
-    {
-      "id": "613b8b1c28a914001b7d28a1",
-      "title": "Coffee",
-      "steps": [
-        "Boil 1 cup of water in a kettle.",
-        "Add 1-2 teaspoons of coffee powder to a cup.",
-        "Pour hot water into the cup over the coffee powder.",
-        "Stir well until the coffee powder dissolves.",
-        "Add sugar and milk to taste, stir again."
-      ],
-      "image": "/ABC.png",
-      "description": "A simple yet refreshing cup of coffee to kickstart your day.",
-      "ingredients": [
-        "1 cup water",
-        "1-2 teaspoons coffee powder",
-        "Sugar",
-        "Milk"
-      ],
-      "cookingTime": "5 minutes"
     }
   ]
   

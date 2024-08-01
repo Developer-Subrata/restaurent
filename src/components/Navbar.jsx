@@ -1,27 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
+
+  const toggleMenu = () => {
+    setMenuVisible(!menuVisible);
+  };
+
   return (
-    <div class="navbar">
-      <nav id="navmenu" class="navmenu">
+    <div className="navbar">
+      <nav id="navmenu" className="navmenu">
         <div className="logo">
-          <img src="../public/logo.png" alt="" />
+          <img src="/logo.png" alt="logo" />
         </div>
-        <div class="items"> 
-          <ul>
-            <li><Link to={"/"} className="active">Home</Link></li>
-            <li><Link to={"/about"}>About</Link></li>
-            <li><Link to={"/Menu"}>Menu</Link></li>
-            <li><Link to="#specials">Specials</Link></li>
-            <li><Link to="#events">Events</Link></li>
-            <li><Link to="#chefs">Chefs</Link></li>
-            <li><Link to="#gallery">Gallery</Link></li>
+        <div className="hamburger" onClick={toggleMenu}>
+          &#9776;
+        </div>
+        <ul className={`nav-links ${menuVisible ? "active" : ""}`}>
+          <li><Link to={"/"}>Home</Link></li>
+          <li><Link to={"/about"}>About</Link></li>
+          <li onClick={toggleDropdown} className="menu-item">
+            Menu <span className="arrow">&#9662;</span>
+            {dropdownVisible && (
+              <ul class="dropdown">
+                <div class="dropdown-content">
+                  <li><Link to={"/veg"}>VEG</Link></li>
+                  <li><Link to={"/nonveg"}>Non-VEG</Link></li>
+                </div>
+              </ul>
+            )}
+          </li>
+          <li><Link to={"/gallery"}>Gallery</Link></li>
+          <li><Link to={"/contact"}>Contact</Link></li>
         </ul>
-        </div>
-        <div class="sign">
-          <Link to="#signup">SignUp/</Link>
-          <Link to="#login">login</Link>
+        <div className="signup">
+        <Link to={"/signupForm"} className="button">Sign Up</Link>
         </div>
       </nav>
     </div>

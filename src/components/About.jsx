@@ -4,15 +4,36 @@ const About = () => {
   return (
     <>
       <article className='about'>
-          <h1> <b>Ranna Ghar</b></h1>
-            <p>Welcome.....
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-              Veniam iusto exercitationem magnam voluptates! Amet itaque aliquid ab. 
-              A illo minus voluptas in cupiditate animi harum quae nesciunt est. 
-              Voluptatum commodi suscipit optio molestias porro facilis maiores labore eum sapiente unde sint libero laboriosam, 
-              maxime in itaque,
-               iste recusandae dolores adipisci.<br></br></p>
-          </article>
+        <section id="about" class="about section">
+
+          <div class="container">
+
+            <div class="items">
+              <div class="col content">
+                <h1><u><span class="spn">About Us</span></u></h1>
+                <p class="fst-italic">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                  magna aliqua.
+                </p>
+                <ul>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
+                  <li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+                </ul>
+                <p>
+                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                </p>
+              </div>
+              <div class="col image">
+                <img src="/coffee.jpg" class="fld about-img" alt="coffee" style={{width: '540px', height: '300px'}}></img>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+      </article>
     </>
   )
 }

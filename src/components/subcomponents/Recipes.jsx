@@ -12,6 +12,7 @@ const Recipes = ({ recipes }) => {
   return (
     <>
       <article className="recipes">
+      <h3><marquee direction="right">Available Now</marquee></h3>
         <section>
           {options.map((element) => {
             return <button key={element}>{element}</button>;
@@ -22,7 +23,7 @@ const Recipes = ({ recipes }) => {
             return <Card key={index} element={element} />;
           })}
         </section>
-        <h3>Recommended Recipes....</h3>
+        <h3>Trending Foods..............</h3>
         <section className="container">
           {recipes.slice(8).map((element, index) => {
             return <Card key={index} element={element} />;
