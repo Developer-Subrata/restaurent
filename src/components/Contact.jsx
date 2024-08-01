@@ -1,11 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { FaFacebook, FaYoutube, FaLinkedin ,FaInstagram} from "react-icons/fa";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Contact = () => {
+    const navigate = useNavigate();
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    });
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [id]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        
+        // Generate a random 6-digit code
+        const contactCode = Math.floor(100000 + Math.random() * 900000);
+        
+        // Include the booking code in the form data
+        const dataToSubmit = { ...formData, contactCode };
+        
+        try {
+            // Replace with your server endpoint
+            const response = await axios.post('http://localhost:5000/contact', dataToSubmit);
+            
+            if (response.status === 200) {
+                alert(` You Successfully Reached ! Your code is ${contactCode}`);
+                navigate("/");
+            } else {
+                alert('Failed to complete contact. Please try again.');
+            }
+        } catch (error) {
+            console.error('There was an error submitting the form!', error);
+            alert('There was an error submitting the form. Please try again.');
+        }
+    };
   return (
     <>
       {/* Contact Start */}
+      <div className="contact">
       <div className="container-xxl py-5">
                     <div className="container">
                         <div className="text-center wow fadeInUp" data-wow-delay="0.1s">
@@ -37,29 +79,29 @@ const Contact = () => {
                             </div>
                             <div className="col-md-6">
                                 <div className="wow fadeInUp" data-wow-delay="0.2s">
-                                    <form>
+                                <form onSubmit={handleSubmit}>
                                         <div className="row g-3">
                                             <div className="col-md-6">
                                                 <div className="form-floating">
-                                                    <input type="text" className="form-control" id="name" placeholder="Your Name" />
+                                                    <input type="text" className="form-control" id="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required/>
                                                     <label htmlFor="name">Your Name</label>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
                                                 <div className="form-floating">
-                                                    <input type="email" className="form-control" id="email" placeholder="Your Email" />
+                                                    <input type="email" className="form-control" id="email" placeholder="Your Email" value={formData.email} onChange={handleChange} required/>
                                                     <label htmlFor="email">Your Email</label>
                                                 </div>
                                             </div>
                                             <div className="col-12">
                                                 <div className="form-floating">
-                                                    <input type="text" className="form-control" id="subject" placeholder="Subject" />
+                                                    <input type="text" className="form-control" id="subject" placeholder="Subject" value={formData.subject} onChange={handleChange} required/>
                                                     <label htmlFor="subject">Subject</label>
                                                 </div>
                                             </div>
                                             <div className="col-12">
                                                 <div className="form-floating">
-                                                    <textarea className="form-control" placeholder="Leave a message here" id="message" style={{ height: '150px' }}></textarea>
+                                                    <textarea className="form-control" placeholder="Leave a message here" id="message"  value={formData.message} onChange={handleChange} required style={{ height: '150px' }}></textarea>
                                                     <label htmlFor="message">Message</label>
                                                 </div>
                                             </div>
@@ -72,6 +114,7 @@ const Contact = () => {
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 {/* Contact End */}
                 

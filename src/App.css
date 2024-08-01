@@ -109,59 +109,194 @@ html, body {
 
 /************************ NAVBAR SECTION STYLING ENDS **************************************/
 
+/*/////////////////////HOME PAGE///////////////////////*/
+.container-xxl {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Custom styles for the hero section */
+.hero-header {
+  background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url('bg-hero.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh; /* Ensures the hero section covers the full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-header img {
+  animation: imgRotate 50s linear infinite;
+}
+
+@keyframes imgRotate { 
+  100% { 
+      transform: rotate(360deg); 
+  } 
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, .5);
+}
+
+/*** Section Title ***/
+.section-title {
+  position: relative;
+  display: inline-block;
+}
+
+.section-title::before {
+  position: absolute;
+  content: "";
+  width: 45px;
+  height: 2px;
+  top: 50%;
+  left: -55px;
+  margin-top: -1px;
+  background: var(--primary);
+}
+
+.section-title::after {
+  position: absolute;
+  content: "";
+  width: 45px;
+  height: 2px;
+  top: 50%;
+  right: -55px; /* Corrected from 0% to 50% */
+  margin-top: -1px;
+  background: var(--primary);
+}
+
+.section-title.text-start::before,
+.section-title.text-end::after {
+  display: none;
+}
+
+/* Animation Styles */
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+/*** Service ***/
+.service-item {
+  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
+  transition: .5s;
+}
+
+.service-item:hover {
+  background-color: yellowgreen;
+}
+
+.service-item * {
+  transition: .5s;
+}
+
+.service-item:hover * {
+  color: var(--light) !important;
+}
+
 /***********************Booking************************************/
-.bookingpage{
-  background-image: url(bgc.jpg);
+/* Add a container for the form */
+.bookingpage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('bgc.jpg') no-repeat center center/cover;
+  padding: 20px;
 }
 
 .booking {
-  max-width: 600px;
-  margin-left: 450px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(83, 84, 78, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(206, 209, 29, 0.1);
+  width: 100%;
+  max-width: 500px;
+  border: 2px solid rgb(106, 97, 97);
   backdrop-filter: blur(10px);
-  
 }
 
-.hq{
-  color: #1107ce;
+.hq {
+  font-size: 30px;
   text-align: center;
+  margin-bottom: 20px;
+  color: #20a2da;
   font-weight: bold;
 }
-.reservation-form {
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
 
-.reservation-form .form-group {
+.form-group {
   margin-bottom: 15px;
 }
 
-.reservation-form .form-group label {
+label {
+  display: block;
   font-weight: bold;
-  color: #0f0f0f;
-  font-size: 17px;
+  font-size: large;
+  margin-bottom: 5px;
+  color: #61f03d;
 }
 
-.reservation-form .form-control {
-  border-radius: 15px;
-  border: 1px solid #ced4da;
+.form-control {
+  width: 100%;
   padding: 10px;
-  font-size: 19px;
-}
-
-.reservation-form .btn {
-  margin-left: 240px;
-  font-size: 19px;
-  font-weight: bold;
-  background-color: #007bff;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease-in-out;
 }
 
-.reservation-form .btn:hover {
-  background-color: #92be33;
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
 }
+
+.btn-primaryb {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primaryb:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .booking {
+      padding: 15px;
+  }
+
+  .hq {
+      font-size: 20px;
+  }
+}
+
 
 
 /************************Booking End**************************/
@@ -169,39 +304,21 @@ html, body {
 
 /************************ ABOUT & CONTACT SECTION STYLING STARTS **************************************/
 
-
+.contact{
+  background-color: #f0e3bd;
+}
 
 
 .mb-5{
   color: #111;
 }
 
-/* .section {
-  padding: 60px 0;
-} */
-
 .about {
   background-size: cover;
   position: relative;
   margin: 46px;
 }
-/* 
-.about:before {
-  content: "";
-  background: color-mix(in srgb, var(--background-color), transparent 12%);
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  right: 0;
-} */
 
-/* .about .container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-} */
 
 .items {
   display: flex;
@@ -287,7 +404,7 @@ html, body {
 
 
 
-/************************ MENU SECTION STYLING ENDS **************************************/
+/************************ MENU(veg-non_veg) SECTION STYLING **************************************/
 
 
 .menu-item {
@@ -301,16 +418,13 @@ html, body {
   background-color: #f1e2e2; /* White background */
   min-width: 200px; /* Minimum width for dropdown */
   margin-top: 7px; /* Space between button and dropdown */
-  
+  z-index: 1000; /* Ensure it appears on top */
 }
 
 /* Change background on hover */
 .dropdown-content a:hover {
   background-color: #1e1b1b; /* Light gray background on hover */
 }
-
-
-/* ///////////////////////////////////veg- non-veg//////////////////////// */
 
 
 .veg, .non-veg {
@@ -428,7 +542,7 @@ input[type="password"]:focus {
 }
 
 input[type="submit"] {
-  margin-top: 35px;
+  margin-top: 25px;
   margin-left: 200px;
   width: 120px;
   height: 32px;
@@ -539,7 +653,20 @@ button.social-signin.google {
   background: #DD4B39;
 }
 
-
+.btn5{
+  background-color: #deaaaa;
+  margin-top: 10px;
+  margin-left: 160px;
+  width: 200px;
+  height: 49px;
+  border: none;
+  border-radius: 10px;
+  color: #090909;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
 
 
 /************************ Sign-UP SECTION STYLING STARTS **************************************/
@@ -791,112 +918,4 @@ footer a:last-child {
 /************************ GALLAREY SECTION STYLING STARTS **************************************/
 
 
-
-
-/*///////////hero//////////////*/
-
-.container-xxl {
-  max-width: 100%;
-  padding: 0;
-  margin: 0;
-}
-
-
-/* Custom styles for the hero section */
-.hero-header {
-  background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url('bg-hero.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh; /* Ensures the hero section covers the full viewport height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-
-.hero-header img {
-  animation: imgRotate 50s linear infinite;
-}
-
-@keyframes imgRotate { 
-  100% { 
-      transform: rotate(360deg); 
-  } 
-}
-
-.breadcrumb-item + .breadcrumb-item::before {
-  color: rgba(255, 255, 255, .5);
-}
-
-/*** Section Title ***/
-.section-title {
-  position: relative;
-  display: inline-block;
-}
-
-.section-title::before {
-  position: absolute;
-  content: "";
-  width: 45px;
-  height: 2px;
-  top: 50%;
-  left: -55px;
-  margin-top: -1px;
-  background: var(--primary);
-}
-
-.section-title::after {
-  position: absolute;
-  content: "";
-  width: 45px;
-  height: 2px;
-  top: 50%;
-  right: -55px; /* Corrected from 0% to 50% */
-  margin-top: -1px;
-  background: var(--primary);
-}
-
-.section-title.text-start::before,
-.section-title.text-end::after {
-  display: none;
-}
-
-/* Animation Styles */
-.animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
-.slideInLeft {
-  animation-name: slideInLeft;
-}
-
-@keyframes slideInLeft {
-  from {
-    transform: translate3d(-100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-/*** Service ***/
-.service-item {
-  box-shadow: 0 0 45px rgba(0, 0, 0, .08);
-  transition: .5s;
-}
-
-.service-item:hover {
-  background-color: yellowgreen;
-}
-
-.service-item * {
-  transition: .5s;
-}
-
-.service-item:hover * {
-  color: var(--light) !important;
-}
 

@@ -40,7 +40,7 @@ const Navbar = () => {
           <li><Link to={"/contact"}>Contact</Link></li>
         </ul>
         <div className="signup">
-        <Link to={"/signupForm"} className="button">Sign Up</Link>
+        <Link to={"/signupForm"} className="button">Sign Up/LogIn</Link>
         </div>
       </nav>
     </div>

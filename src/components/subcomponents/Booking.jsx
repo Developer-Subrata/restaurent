@@ -1,52 +1,92 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function Booking() {
-    const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your form submission logic here
-    // For example, you can send form data to your server
+    const navigate = useNavigate();                         // Hook for programmatic navigation to different routes
+    const [formData, setFormData] = useState({              // State to store form data
+        name: '',   
+        email: '',  
+        phone: '',
+        date: '', 
+        time: '',   
+        guests: ''  
+    });
 
-    // After successful form submission, redirect to another page
-    
-    navigate("/Login");
-  };
+    // Function to handle changes in form fields
+    const handleChange = (e) => {
+        const { id, value } = e.target;         // Destructure the id and value from the event target
+        setFormData(prevState => ({             // Update the formData state
+            ...prevState,                       // Spread in the previous state
+            [id]: value                         // Update the changed field
+        }));
+    };
+
+    // Function to handle form submission
+    const handleSubmit = async (e) => {
+        e.preventDefault();                     // Prevent the default form submission behavior
+        
+        // Generate a random 6-digit booking code(optional)
+        const bookingCode = Math.floor(100000 + Math.random() * 900000);
+        
+        // Include the booking code in the data to be submitted
+        const dataToSubmit = { ...formData, bookingCode };
+        
+        try {
+            // Send a POST request to the server endpoint with the form data
+            const response = await axios.post('http://localhost:5000/bookings', dataToSubmit);
+            
+            if (response.status === 200) {              // Check if the request was successful
+                // Alert the user of successful booking and show the booking code
+                alert(`Booking complete successfully! Your booking code is ${bookingCode}`);
+                navigate("/"); // Navigate to the home page
+            } else {
+                // Alert the user of a failure in booking
+                alert('Failed to complete booking. Please try again.');
+            }
+        } catch (error) {
+            // Log the error and alert the user if there's an issue with submission
+            console.error('There was an error submitting the form!', error);
+            alert('There was an error submitting the form. Please try again.');
+        }
+    };
+
+
     return (
         <div className='bookingpage'>
-        <div className="booking">
-            <form id="booking-box" onSubmit={handleSubmit}></form>
-            <form id="reservationForm" className="reservation-form">
-                <div className="form-group">
-                    <h1 className='hq'> Reserve Now</h1>
-                    <label htmlFor="name">Name</label>
-                    <input type="text" className="form-control" id="name" placeholder="Enter your name" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email</label>
-                    <input type="email" className="form-control" id="email" placeholder="Enter your email" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="phone">Phone</label>
-                    <input type="tel" className="form-control" id="phone" placeholder="Enter your phone number" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="date">Date</label>
-                    <input type="date" className="form-control" id="date" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="time">Time</label>
-                    <input type="time" className="form-control" id="time" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="guests">Number of Guests</label>
-                    <input type="number" className="form-control" id="guests" placeholder="Enter number of guests" required />
-                </div>
-                <button type="submit" className="btn btn-primary">BOOK</button>
-            </form>
-        </div>
+    <div className="booking">
+        <form id="booking-box" onSubmit={handleSubmit}>
+            <div className="form-group">
+                <h1 className='hq'> *-Reserve Now-*</h1>
+                <label htmlFor="name">Name :</label>
+                <input type="text" className="form-control" id="name" placeholder="Enter your name" value={formData.name} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="email">Email :</label>
+                <input type="email" className="form-control" id="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="phone">Phone :</label>
+                <input type="tel" className="form-control" id="phone" placeholder="Enter your phone number" value={formData.phone} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="date">Date :</label>
+                <input type="date" className="form-control" id="date" value={formData.date} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="time">Time :</label>
+                <input type="time" className="form-control" id="time" value={formData.time} onChange={handleChange} required />
+            </div>
+            <div className="form-group">
+                <label htmlFor="guests">Number of Guests :</label>
+                <input type="number" className="form-control" id="guests" placeholder="Enter number of guests" value={formData.guests} onChange={handleChange} required />
+            </div>
+            <button type="submit" className="btn btn-primaryb">BOOK</button>
+        </form>
     </div>
+</div>
+
     );
 }
 
